@@ -13,5 +13,4 @@ Route::post('/notes', [NoteController::class, 'store']);
 Route::delete('/notes/{note}', [NoteController::class, 'destroy']);
 Route::get('/notes/{note}/edit', [NoteController::class, 'edit']);
 Route::put('/notes/{note}', [NoteController::class, 'update']);
-
-
+Route::patch('/notes/{note}/toggle', [NoteController::class, 'toggle']);

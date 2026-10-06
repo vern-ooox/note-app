@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Note;
+use App\Models\CheckList;
 
 class NoteController extends Controller
 {
@@ -45,6 +46,17 @@ class NoteController extends Controller
             'title' => $request->title,
             'content' => $request->content,
         ]);
+
+        return redirect('/notes');
     }
+
+    public function toggle(Request $request, Note $note)
+{
+    $note->update(['is_done' => $request->boolean('is_done')]);
+
+    return response()->json(['is_done' => $note->is_done]);
+}
+
+
 }
 
